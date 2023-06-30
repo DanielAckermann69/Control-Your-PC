@@ -36,7 +36,7 @@ settings = {
         "start-channel": "YOUR CHANNEL ID", ## fill in your channel id
         "askpermisson": {"message": "","use": ""},
         "descriptionmessage": "",
-        "token": "YOUR BOT TOKEN" ## Or you can use my bot... How? scroll down!
+        "token": "YOUR BOT TOKEN"
     },
     "paths": {
         "username": os.getlogin(),
@@ -551,18 +551,4 @@ async def tasks(ctx):
 if __name__ == '__main__':
     client.run(settings['settings']['token'])
 
-
-
-############ How to Use my bot for your server? #############
-# 1.
-#   Invite the Bot to your server using this link:
-#       https://discord.com/oauth2/authorize?client_id=909868908721360928&permissions=8&scope=bot
-#	the bot needs admin rights, so he can delete messages (clear command)
-# 2.
-#   Create a new Channel or take an already existing one and copy the channel id.
-# 3.
-#   Lastly, take the channel id and the token and paste them into the settings['settings']['token'] and settings['settings']['start-channel']
-#
-#
-# Token = OTA5ODY4OTA4NzIxMzYwOTI4.YZKjdA.Jb16glQD0mTLwcyRrBagPYWekVA
 
