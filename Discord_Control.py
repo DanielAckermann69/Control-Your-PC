@@ -1,3 +1,16 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##################################################
 ## This Programm lets you control your PC over
 ## Discord.
@@ -10,7 +23,20 @@
 ## Copyright: Copyright 2023, Control-Your-PC
 ## Version: 1.0.0
 ## Email: danielackermann.control.your.pc@gmail.com
-##################################################
+###################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25,25 +51,26 @@ from socket import create_connection
 from PIL.ImageGrab import grab
 from pathlib import Path
 from discord.ext.commands import Bot
+
 ################# SETTINGS ##################
 settings = {
     "settings": {
-        "name": "Discord_Control", ## Change if you want
+        "name": "Discord_Control",  # Change if you want
         "img": "https://m.media-amazon.com/images/I/41mhRSelGfL.png",
-        "prefix": "!PC ",
+        "prefix": "!PC ",   # Change the prefix to what you want. By default its !PC with a space after it! commands would be "!PC commands"
         "internet-connection": False,
         "startmessage": {'main': '', 'zusatz': ''},
-        "start-channel": "YOUR CHANNEL ID", ## fill in your channel id
+        "start-channel": "YOUR CHANNEL ID",     # fill in your channel id
         "askpermisson": {"message": "","use": ""},
         "descriptionmessage": "",
-        "token": "YOUR BOT TOKEN"
+        "token": "YOUR BOT TOKEN"   # fill in your Bot Token. Dont know how to get it? --> WATCH A TUTORIAL THEN!!!
     },
     "paths": {
         "username": os.getlogin(),
         "userpath": Path.home(),
         "mainpath": Path(str(Path.home()) + '/Documents/Discord_Control'),
     }
-}
+}   # Change Your settings in here! <--
 
 while not settings['settings']['internet-connection']:
     try:
@@ -60,6 +87,7 @@ client = Bot(command_prefix=settings["settings"]["prefix"])
 si = STARTUPINFO()
 si.dwFlags |= STARTF_USESHOWWINDOW
 #############################################
+
 
 def screeni():
     x, y = position()
@@ -153,6 +181,7 @@ async def on_reaction_add(reaction, user):
                 await settings['settings']['askpermisson']['message'].delete()
                 settings['settings']['askpermisson']['message'] = None
                 settings['settings']['askpermisson']['use'] = None
+
 
 async def splitsend(data, title="Data",embeded=True, data_already_split=False,splitsize = 50,maxcycles = 5):
     if not data_already_split:
@@ -431,7 +460,6 @@ async def get(ctx,*,file):
             await settings['settings']['start-channel'].send("File not found")
 
 
-
 @client.command(description = "Downloads all files in cwd from your pc",help=f"""
 This command uploads all files from the current working directory onto discord.
 Example: {settings['settings']['prefix']}getAll
@@ -449,8 +477,6 @@ async def getAll(ctx):
                 await settings['settings']['start-channel'].send(file=File(file))
             except Exception as e:
                 await settings['settings']['start-channel'].send(f"Error downloading {file}: {e}")
-
-
 
 
 @client.command(description = "Downloads a file the internet and saves it on your pc (cwd)",help=f"""
@@ -528,7 +554,6 @@ async def saveFile(ctx):
             await settings['settings']['start-channel'].send("File saved!")
         except Exception as e:
             await settings['settings']['start-channel'].send(f"Error while saving File {attachment.filename}: {e}")
-
 
 
 @client.command(description = "lists all tasks",help=f"""
